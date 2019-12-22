@@ -10,12 +10,18 @@ class API
      * 
      * @return void
      */
-    public function select()
+    public function select($id = false)
     {
 
         $db     = new Connect;
         $users  = array();
-        $query  = 'SELECT * FROM users ORDER BY id';
+
+        if($id === false){
+            $query  = 'SELECT * FROM users ORDER BY id';
+        }else{
+            $query  = 'SELECT * FROM users WHERE id = '.$id. ' ORDER BY id';
+        }
+
         $result = $db->prepare($query);
 
         if($result->execute()){
@@ -67,8 +73,28 @@ class API
 }
 
 
-$users = new API;
+// print_r($_GET);
 
-//demo ouput
-echo $users->select();
-//echo $users->delete();
+/*******************/
+//testing
+if(isset($_GET['url'])) {
+
+    $urlSplit = explode('/', $_GET['url']);
+
+    if( $urlSplit[0] == 'users') {
+
+        $users = new API;
+        $id    = false;
+
+        if(isset($urlSplit[1]) && is_numeric($urlSplit[1]) ){
+            $id = $urlSplit[1];
+        }
+
+        echo $users->select($id);
+
+    }
+
+}else{
+    echo 'failed';
+}
+/*******************/
