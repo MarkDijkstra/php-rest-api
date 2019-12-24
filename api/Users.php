@@ -17,15 +17,15 @@ class Users
 
         $users = [];
 
-        if($id === false){
+        if ($id === false) {
             $query  = 'SELECT * FROM users ORDER BY id';
-        }else{
+        } else {
             $query  = 'SELECT * FROM users WHERE id = '.$id. ' ORDER BY id';
         }
 
         $result = $this->db->prepare($query);
 
-        if($result->execute()){
+        if ($result->execute()) {
         
             // output everything for now
             // while($output = $result->fetch(PDO::FETCH_ASSOC))
@@ -38,7 +38,7 @@ class Users
             //     );
 
             // }
-            
+             
             $output = $result->fetch(PDO::FETCH_ASSOC);
             return json_encode($output);
 

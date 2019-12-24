@@ -31,7 +31,7 @@ class Connect extends PDO
 
         $this->connection = null;
 
-        try{
+        try {
 
             $opts = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                           PDO::ATTR_EMULATE_PREPARES => false,
@@ -39,7 +39,7 @@ class Connect extends PDO
 
             $this->connection = parent::__construct("mysql:host=".$this->host.";dbname=".$this->database, 
             $this->username, $this->password , $opts);
-        }catch(PDOException $exception){
+        } catch(PDOException $exception) {
             echo "Error: " . $exception->getMessage();
         }
 
