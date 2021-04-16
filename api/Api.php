@@ -6,9 +6,9 @@ class API
 {
     private $db;
 
-    public function __construct()
+    public function __construct($connect)
     {
-        $this->db = new Connect;
+        $this->db = $connect;
     }
 
     /**

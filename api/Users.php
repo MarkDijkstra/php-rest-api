@@ -1,20 +1,17 @@
 <?php
 
-require_once(__DIR__ . '/connect.php');
-
 class Users
 {
 
     private $db;
 
-    public function __construct()
+    public function __construct($connection)
     {
-         $this->db = new Connect;
+         $this->db = $connection;         
     }
 
     public function select($id = false)
     {
-
         $users = [];
 
         if ($id === false) {
@@ -65,13 +62,10 @@ class Users
      */
     public function delete()
     {
-
-        $db     = new Connect;     
         $query  = 'TRUNCATE users';
-        $result = $db->prepare($query);
+        $result = $this->db->prepare($query);
 
-        $result->execute();
-        
+        $result->execute();        
     }
 
 }

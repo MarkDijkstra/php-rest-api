@@ -18,9 +18,7 @@ class Connect extends PDO
      */
     public function __construct()
     {
-
        return $this->connectToDatabase();
-
     }
 
     /**
@@ -28,7 +26,6 @@ class Connect extends PDO
      */
     public function connectToDatabase()
     {
-
         $this->connection = null;
 
         try {
@@ -45,7 +42,6 @@ class Connect extends PDO
 
         return $this->connection;
 
-    }
-  
+    }  
     
 }
